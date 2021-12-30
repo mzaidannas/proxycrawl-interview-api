@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: ca6e31463e39d2d7051515c563721b317cf73bb9
+  revision: a17629e393141fadaae75fd1398fa4b80b7a5c5c
   branch: main
   specs:
     actioncable (7.1.0.alpha)
@@ -110,6 +110,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.9.3)
       msgpack (~> 1.0)
+    brotli (0.4.0)
     build-environment (1.13.0)
     builder (3.2.4)
     concurrent-ruby (1.1.9)
@@ -189,14 +190,9 @@ GEM
     samovar (2.1.4)
       console (~> 1.0)
       mapping (~> 1.0)
-    stimulus-rails (1.0.2)
-      railties (>= 6.0.0)
     thor (1.1.0)
     thread-local (1.1.0)
     timers (4.3.3)
-    turbo-rails (1.0.0)
-      actionpack (>= 6.0.0)
-      railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     web-console (4.2.0)
@@ -215,6 +211,7 @@ PLATFORMS
 DEPENDENCIES
   async-http
   bootsnap
+  brotli
   console
   debug
   falcon (~> 0.39.2)
@@ -223,9 +220,7 @@ DEPENDENCIES
   pg
   rails!
   redis (~> 4.0)
-  stimulus-rails
   thread-local
-  turbo-rails
   tzinfo-data
   web-console
 
