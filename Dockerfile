@@ -1,5 +1,5 @@
 # Using alpine image for small size
-FROM 3.1.0-alpine:latest
+FROM ruby:3.1.0-alpine
 
 # Install runtime dependencies
 RUN apk update && apk add --update tzdata shared-mime-info git
@@ -42,8 +42,8 @@ RUN if [[ "$RAILS_ENV" == "test" ]]; then\
 
 # Remove build dependencies and install runtime dependencies
 RUN if [[ "$RAILS_ENV" != "development" ]]; then\
-  apk del build-dependency &&\
-  apk add --update libxml2 libxslt postgresql-client postgresql-libs libcurl; fi
+ apk del build-dependency &&\
+ apk add --update libxml2 libxslt postgresql-client postgresql-libs libcurl; fi
 
 # Adding project files
 COPY . .
@@ -51,4 +51,8 @@ COPY . .
 # Use ruby's jit in time compiler for better performance
 ENV RUBY_OPT "--yjit"
 
+ENTRYPOINT [ "entrypoint.sh" ]
+
 EXPOSE 3000
+
+CMD ["bundle", "exec", "falcon", "serve", "-b", "http://0.0.0.0:${PORT:-3000}", "--cache", "--threaded", "--preload", "config/preload.rb"]
